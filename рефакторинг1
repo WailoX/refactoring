@@ -1,0 +1,46 @@
+import math
+
+class Shape:
+    def calculate_area(self):
+        pass
+
+class Circle(Shape):
+    def __init__(self, radius):
+        self.radius = radius
+
+    def calculate_area(self):
+        return math.pi * self.radius**2
+
+class Rectangle(Shape):
+    def __init__(self, length, width):
+        self.length = length
+        self.width = width
+
+    def calculate_area(self):
+        return self.length * self.width
+
+def get_positive_float(prompt):
+    while True:
+        try:
+            value = float(input(prompt))
+            if value > 0:
+                return value
+            else:
+                print("Недопустимый ввод. Пожалуйста, введите положительное значение.")
+        except ValueError:
+            print("Недопустимый ввод. Пожалуйста, введите корректное число.")
+
+def main():
+    radius = get_positive_float("Введите радиус круга: ")
+    circle = Circle(radius)
+    circle_area = circle.calculate_area()
+    print(f"Площадь круга с радиусом {radius} равна {circle_area:.2f}")
+
+    length = get_positive_float("Введите длину прямоугольника: ")
+    width = get_positive_float("Введите ширину прямоугольника: ")
+    rectangle = Rectangle(length, width)
+    rectangle_area = rectangle.calculate_area()
+    print(f"Площадь прямоугольника с длиной {length} и шириной {width} равна {rectangle_area:.2f}")
+
+if __name__ == "__main__":
+    main()
