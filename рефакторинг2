@@ -1,0 +1,68 @@
+import java.util.Random;
+import java.util.Scanner;
+
+public class Main {
+    private static final int MIN_NUMBER = 1;
+    private static final int MAX_NUMBER = 10;
+
+    public static void main(String[] args) {
+        System.out.println("Привет!\nБудешь угадывать? (да/нет)");
+        Scanner scanner = new Scanner(System.in);
+        String answer = scanner.nextLine();
+
+        while (true) {
+            if (answer.equals("нет")) {
+                System.out.println("(×﹏×)");
+                break;
+            } else if (!answer.equals("да")) {
+                System.out.println("(︶︹︺)\n непонятно, давай до свидания");
+                break;
+            }
+
+            System.out.println("(⌒‿⌒)");
+            playGame(scanner);
+
+            System.out.println("Будешь угадывать? (да/нет)");
+            answer = scanner.nextLine();
+        }
+    }
+
+    private static void playGame(Scanner scanner) {
+        Random random = new Random();
+        int targetNumber = random.nextInt(MAX_NUMBER) + 1;
+
+        while (true) {
+            System.out.println("угадай число от 1 до 10");
+            int number = getIntInput(scanner);
+
+            if (number == targetNumber) {
+                System.out.println("╰(▔∀▔)╯");
+                break;
+            } else {
+                int difference = Math.abs(number - targetNumber);
+                if (difference > 5) {
+                    System.out.println("Холодно");
+                } else if (difference > 2) {
+                    System.out.println("Тепло");
+                } else {
+                    System.out.println("Жгётся!");
+                }
+            }
+        }
+    }
+
+    private static int getIntInput(Scanner scanner) {
+        while (true) {
+            try {
+                int number = Integer.parseInt(scanner.nextLine());
+                if (number < MIN_NUMBER || number > MAX_NUMBER) {
+                    System.out.println("Читать не умеешь?");
+                } else {
+                    return number;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Введите число от 1 до 10.");
+            }
+        }
+    }
+}
