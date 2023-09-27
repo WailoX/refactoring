@@ -1,0 +1,20 @@
+def calculate_circle_area(radius):
+    if radius > 0:
+        area = 3.14 * radius * radius
+        print(f"Площадь круга радиусом {radius} равна {area:.2f}")
+    else:
+        print("Неверный радиус. Введите положительное значение.")
+
+def calculate_rectangle_area(length, width):
+    if length > 0 and width > 0:
+        area = length * width
+        print(f"Площадь прямоугольника с длиной {length} и шириной {width} равна {area:.2f}")
+    else:
+        print("Неверные размеры. Пожалуйста, введите положительные значения длины и ширины.")
+
+radius = float(input("Введите радиус окружности: "))
+calculate_circle_area(radius)
+
+length = float(input("Введите длину прямоугольника: "))
+width = float(input("Введите ширину прямоугольника: "))
+calculate_rectangle_area(length, width)
